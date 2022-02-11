@@ -27,9 +27,7 @@ namespace AlbelliChallenge
 
             services.AddAutoMapper(typeof(OrderProfile));
             var orderDetailsRepository = new OrderDetailsRepository { };
-            //Services
             services.AddTransient<IOrderService, OrderService>();
-            //Persistence
             services.AddTransient<IOrderPersistenceGateway>(ctx => new OrderPersistenceGateway(orderDetailsRepository));
             services
                 .AddMvc(options => options.EnableEndpointRouting = false)
